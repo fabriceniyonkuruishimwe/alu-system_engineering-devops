@@ -1,9 +1,8 @@
+# alu-system_engineering-devops
 
-# ALU System Engineering DevOps
-
-This repository contains Bash scripts for system engineering and DevOps tasks.
+This repository contains Bash scripts and projects for the ALU System Engineering and DevOps curriculum.
 
 ## SSH
 
-The `0-use_a_private_key` script connects to a server using SSH authentication with a private key.
-
+- `ssh/0-use_a_private_key`: connects to my server over SSH using the private key `~/.ssh/school` as the user `ubuntu`.
+- `ssh/1-create_ssh_key_pair`: creates a 4096-bit RSA key pair named `school`, protected by a passphrase.
