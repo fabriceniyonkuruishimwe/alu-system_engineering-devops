@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Installs nginx and adds a custom X-Served-By header with the server hostname
+# shellcheck disable=SC2154
+apt-get update -y
+apt-get install -y nginx
+echo "Hello World!" > /var/www/html/index.html
+if ! grep -q "X-Served-By" /etc/nginx/sites-available/default; then
+    sed -i "s|^[[:space:]]*location / {|\tadd_header X-Served-By $HOSTNAME;\n\n\tlocation / {|" /etc/nginx/sites-available/default
+fi
+service nginx restart
