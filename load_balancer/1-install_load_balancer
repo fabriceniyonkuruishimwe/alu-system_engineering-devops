@@ -24,3 +24,10 @@ backend http_back
     server 7369-web-01 3.9.170.8:80 check
     server 7369-web-02 18.134.244.108:80 check
 EOF
+fi
+
+# Check the config, then restart through the init script
+haproxy -c -f /etc/haproxy/haproxy.cfg
+service haproxy restart
+echo "Load balancer backends:"
+grep -E "web-0[12]" /etc/haproxy/haproxy.cfg
