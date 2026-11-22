@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Runs nginx as the nginx user and listens on port 8080
+chmod 644 /etc/nginx/nginx.conf
+sed -i --follow-symlinks -E 's/^#?\s*user\s+[^;]+;/user nginx;/' /etc/nginx/nginx.conf
+sed -i --follow-symlinks -E 's/\b80\b/8080/g' /etc/nginx/sites-enabled/default
+service nginx stop
+sudo -u nginx service nginx start
